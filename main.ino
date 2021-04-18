@@ -1,13 +1,17 @@
-//Sample using LiquidCrystal library
+/*
+ * ------------------------------------------------------------
+ * "THE BEERWARE LICENSE" (Revision 42):
+ * Marco Füglistaler wrote this code. As long as you retain this 
+ * notice, you can do whatever you want with this stuff. If we
+ * meet someday, and you think this stuff is worth it, you can
+ * buy me a beer in return.
+ * ------------------------------------------------------------
+ */
+//using LiquidCrystal library
 #include <LiquidCrystal.h>
+//using the CCS811 library from Adafruit
 #include "Adafruit_CCS811.h"
 Adafruit_CCS811 ccs;
-/*******************************************************
-
-This program will test the LCD panel and the buttons
-Mark Bramwell, July 2010
-
-********************************************************/
 
 // select the pins used on the LCD panel
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
@@ -102,11 +106,11 @@ void loop()
        if(ccs.available()){
         if(!ccs.readData()){
           lcd.print("CO2: ");
-          lcd.print(ccs.geteCO2());
+          lcd.print(ccs.geteCO2());//print the CO2 value
           lcd.print("ppm       ");
           lcd.setCursor(0,1);
           lcd.print("TVO: ");
-          lcd.print(ccs.getTVOC());
+          lcd.print(ccs.getTVOC());//print the TVOC value
           lcd.print("ppb    ");
         }
         else{
